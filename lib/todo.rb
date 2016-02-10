@@ -1,6 +1,3 @@
-#!/bin/env ruby
-# encoding: utf-8
-
 class TodoItem
   include Listable
   
@@ -16,16 +13,9 @@ class TodoItem
     @due ? @due.strftime("%D") : "No due date"
   end
 
-  def format_priority
-    return " ⇧" if  @priority == "high"
-    return " ⇨" if  @priority == "medium"
-    return " ⇩" if  @priority == "low"
-    return ""   if !@priority
-  end
-
   def details
     format_description(@description,25) + "due: " +
     format_date +
-    format_priority
+    format_priority(@priority)
   end
 end
