@@ -7,6 +7,7 @@ class LinkItem
     @site_name   = options[:site_name]
   end
 
+  # XXXX See if can be removec
   def format_name
     @site_name ? @site_name : ""
   end

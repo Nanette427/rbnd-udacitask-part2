@@ -12,12 +12,6 @@ module Listable
     "#{description}".ljust(ljust_size)
   end
 
-  def format_name
-  end
-
-  def format_date
-  end
-
   # Returns a special char to indicate
   # the level of priority.
   #
@@ -30,21 +24,17 @@ module Listable
   	return " ⇩" if  priority == "low"
   	return ""   if !priority
   end
-  # # From link
-  # def format_name
-  #   @site_name ? @site_name : ""
-  # end
-  
-  # # From events
-  # def format_date
-  #   dates = @start_date.strftime("%D")         if @start_date
-  #   dates << " -- " + @end_date.strftime("%D") if @end_date
-  #   dates = "N/A"                              if !dates
-  #   return dates
-  # end
 
-  # # From todo
-  # def format_date
-  #   @due ? @due.strftime("%D") : "No due date"
-  # end
+  # Returns a formatted strind that represent date
+  # 
+  # Params:
+  #  +start_date+:: the start date
+  #  +end_date+:: the end date
+  def format_date(start_date=nil,end_date=nil)
+  	dates = start_date.strftime("%D")         if start_date
+  	dates << " -- " + end_date.strftime("%D") if end_date
+  	dates = "No due date"                     if !start_date && !end_date
+   return dates
+  end
+
 end
