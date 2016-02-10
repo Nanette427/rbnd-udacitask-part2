@@ -13,7 +13,7 @@ class UdaciList
       raise UdaciListErrors::InvalidItemType, "#{type} is not a valid type." if 
         !["todo","event","link"].include?(type)
       priority = options[:priority]
-      raise UdaciListErrors::InvalidPriorityValue, "#{priority} is not a valid priorit" if
+      raise UdaciListErrors::InvalidPriorityValue, "#{priority} is not a valid priority" if
         priority && !["low","high","medium"].include?(priority)
     rescue => e
       puts "#{e.class}: #{e.message}"
@@ -44,9 +44,10 @@ class UdaciList
   end
 
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    title = @title || "Unkown title"
+    puts "-" * title.length
+    puts title
+    puts "-" * title.length
     @items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
