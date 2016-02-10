@@ -49,7 +49,8 @@ class UdaciList
     puts title
     puts "-" * title.length
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      type = (item.class).to_s.sub("Item","")
+      puts "#{position + 1}) #{item.details} type: #{type}" 
     end
   end
 end
