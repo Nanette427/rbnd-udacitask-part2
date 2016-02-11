@@ -29,3 +29,4 @@ Lot of place:
 - It will be nie to add some test, some method begin to be hard to valudate just by 'manual' testing. 
 - Better documentation, I do lot of effort to be descriptive in my comment but some times I feel like I just repeat the code of the method in a human... I feel like saying 
 'Returns X if Y and Z if A' is little bit useless. 
+- With the same idea I neeed to improve my commit message some time it is not really explicit and some other my commit is just to big, so many feature in one commit.

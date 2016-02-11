@@ -6,6 +6,7 @@ require 'date'
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
+require_relative "lib/item"
 require_relative "lib/todo"
 require_relative "lib/event"
 require_relative "lib/link"
@@ -62,7 +63,3 @@ puts new_list.todo_should_be_done_for("In 2 weeks").inspect
 puts "\nTest remove_past_items"
 list.remove_past_items!
 list.all
-
-
-
-

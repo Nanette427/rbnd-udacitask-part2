@@ -19,7 +19,7 @@ class UdaciList
     type = type.downcase
     begin 
       raise UdaciListErrors::InvalidItemType, "#{type} is not a valid type." if 
-        !is_valid_type?(type)
+        !Item.is_valid_type?(type)
       priority = options[:priority]
       raise UdaciListErrors::InvalidPriorityValue, "#{priority} is not a valid priority" if
         priority && !["low","high","medium"].include?(priority)
@@ -44,7 +44,6 @@ class UdaciList
         @items.delete_at(index - 1) == nil
     rescue => e
       puts "#{e.class}: #{e.message}"
-      return
     end
   end
   
@@ -62,7 +61,7 @@ class UdaciList
   def all
     rows  = []
     @items.each_with_index do |item, position|
-      rows << ["#{position + 1}", item.details, extract_type(item)] 
+      rows << ["#{position + 1}", item.details, item.class.extract_type] 
     end
     table = Terminal::Table.new(
       :title    => @title || "Unkown title",
@@ -72,30 +71,13 @@ class UdaciList
     puts table
   end
 
-  # For a specific item extract the type
-  # 
-  # Params:
-  #  +item+:: a single item
-  def extract_type(item)
-    (item.class).to_s.sub("Item","")
-  end
-
-  # Returns a boolean that indicate if a given
-  # type is valid or not
-  # 
-  # Params:
-  #  +type+:: the type we want to test
-  def is_valid_type?(type)
-    ["todo","event","link"].include?(type)
-  end
-
   # Returns list of item with a specific type
   # or return a message
   #
   # Params: 
   #  +filter+: type of event we want to select
   def filter(type)
-    filtered_items = @items.select { |item| extract_type(item).downcase == type.downcase }
+    filtered_items = @items.select { |item| item.class.extract_type == type.downcase }
     return filtered_items.empty? ? "No '#{type}' items found" : filtered_items
   end
 
@@ -108,20 +90,14 @@ class UdaciList
     todo_items  = filter("todo")
     return todo_items if todo_items.empty?
     date        = Chronic.parse(date)
-    todo_before = todo_items.select { |item| item.due && item.due <= date }
+    return todo_items.select { |item| item.due && item.due <= date }
   end
 
   # Remove all the items that is no more relevant 
   # due date or end_date already in the past
   def remove_past_items!
     @items = @items.reject do |item|
-      last_date = nil
-      if item.is_a?(TodoItem)
-        last_date = item.due
-      elsif item.is_a?(EventItem)
-        last_date = item.end_date || item.start_date
-      end
-      last_date && last_date <= Time.now
+      item.more_advanced_date <= Time.now
     end
   end
 

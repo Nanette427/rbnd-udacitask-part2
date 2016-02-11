@@ -1,5 +1,4 @@
-class LinkItem
-  include Listable
+class LinkItem < Item
   
   attr_reader :description, :site_name
 

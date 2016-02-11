@@ -1,5 +1,4 @@
-class TodoItem
-  include Listable
+class TodoItem < Item
   
   attr_reader :description, :due, :priority
 
@@ -21,5 +20,10 @@ class TodoItem
     format_description(@description,25) + "due: " +
     format_date(@due) +
     format_priority(@priority)
+  end
+
+  # Returns the due date if exist
+  def more_advanced_date
+    @due || nil
   end
 end
