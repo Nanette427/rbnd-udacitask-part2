@@ -1,13 +1,31 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+I choosed terminal-table for formatting my list. 
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) I decided to recue each errors. 
+  b) I added delete_items that allow to delete multiple items at once (since I already have this feature in udacitask1)
+  c) I added todo_should_be_done_for that return all the todo item that should be done before a certain date. Can be helpfull.
+  d) I added a remove_past_items! that remove all the past items from a list. Allow user to do some cleanup.
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+Something like 3 hours, and I decided to submit. I saw lot of caveat and lot of think that can be done in a better way, but it's like it will never end if I added everything I have in mind. 
+
 2. What was the most rewarding challenge you conquered?
+Decided to submit. And find that I need this line:
+# encoding: utf-8
+to have special characters worked. 
+
 3. What two additional features did you build? Why?
+	See part 1 
+
 4. Where do you still have room to grow?
+Lot of place: 
+
+- I think I can have better validation of my arguments at the begenning of each method.
+- It will be nie to add some test, some method begin to be hard to valudate just by 'manual' testing. 
+- Better documentation, I do lot of effort to be descriptive in my comment but some times I feel like I just repeat the code of the method in a human... I feel like saying 
+'Returns X if Y and Z if A' is little bit useless. 

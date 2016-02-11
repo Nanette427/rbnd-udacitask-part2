@@ -113,7 +113,7 @@ class UdaciList
 
   # Remove all the items that is no more relevant 
   # due date or end_date already in the past
-  def remove_past_items
+  def remove_past_items!
     @items = @items.reject do |item|
       last_date = nil
       if item.is_a?(TodoItem)

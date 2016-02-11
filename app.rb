@@ -60,7 +60,7 @@ puts list.filter("link").inspect
 puts "\nTest todo_should_be_done_for"
 puts new_list.todo_should_be_done_for("In 2 weeks").inspect
 puts "\nTest remove_past_items"
-list.remove_past_items
+list.remove_past_items!
 list.all
 
 
