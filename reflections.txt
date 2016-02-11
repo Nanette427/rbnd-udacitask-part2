@@ -17,9 +17,7 @@ Hmmm... final one more hour to refactor and add the Item superclass, that I feel
 
 
 2. What was the most rewarding challenge you conquered?
-Decided to submit. And find that I need this line:
-# encoding: utf-8
-to have special characters worked. 
+Think to have a Item super class
 
 3. What two additional features did you build? Why?
 	See part 1 
