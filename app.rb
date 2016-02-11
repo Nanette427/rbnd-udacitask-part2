@@ -1,5 +1,6 @@
 require 'chronic'
 require 'colorize'
+require 'terminal-table'
 # Find a third gem of your choice and add it to your project
 require 'date'
 require_relative "lib/listable"
@@ -44,4 +45,4 @@ new_list.all
 
 # # DEMO FILTER BY ITEM TYPE
 # # ------------------------
-# new_list.filter("event")
+new_list.filter("event")

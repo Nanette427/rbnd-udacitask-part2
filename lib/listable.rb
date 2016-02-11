@@ -19,9 +19,9 @@ module Listable
   #  +priority+:: the level of priority (string), 
   #  can be nil
   def format_priority(priority)
-  	return " ⇧" if  priority == "high"
-  	return " ⇨" if  priority == "medium"
-  	return " ⇩" if  priority == "low"
+  	return " ⇧".colorize(:red)    if  priority == "high"
+  	return " ⇨".colorize(:green)  if  priority == "medium"
+  	return " ⇩".colorize(:yellow) if  priority == "low"
   	return ""   if !priority
   end
 
