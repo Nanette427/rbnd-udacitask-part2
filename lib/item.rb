@@ -1,6 +1,7 @@
 class Item
   include Listable
 
+  # Should be redifine in subclass
   def more_advanced_date
   	nil
   end

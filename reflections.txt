@@ -13,6 +13,8 @@ I choosed terminal-table for formatting my list.
 # -------------------------------------------------------
 1. How long did you spend working on this project?
 Something like 3 hours, and I decided to submit. I saw lot of caveat and lot of think that can be done in a better way, but it's like it will never end if I added everything I have in mind. 
+Hmmm... final one more hour to refactor and add the Item superclass, that I feel is the good way to do, no ? In fact it wath strange to have lot of logic regarding the Item in udacilist directly.
+
 
 2. What was the most rewarding challenge you conquered?
 Decided to submit. And find that I need this line:

@@ -13,7 +13,7 @@ class EventItem < Item
     format_description(@description, 25) + "event dates: " + format_date(@start_date,@end_date)
   end
 
-  # Return the end_date or the start_date
+  # Returns the end_date or the start_date
   # or nil both absent
   def more_advanced_date
     @end_date || @start_date || nil
