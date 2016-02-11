@@ -9,6 +9,7 @@ class EventItem
     @end_date    = Chronic.parse(options[:end_date])   if options[:end_date]
   end
 
+  # Returns a formatted string that details the item
   def details
     format_description(@description, 25) + "event dates: " + format_date(@start_date,@end_date)
   end

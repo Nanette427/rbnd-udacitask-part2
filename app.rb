@@ -45,4 +45,12 @@ new_list.all
 
 # # DEMO FILTER BY ITEM TYPE
 # # ------------------------
-new_list.filter("event")
+# Test with a present item type
+filter_event = new_list.filter("event")
+puts filter_event.inspect
+
+# Test with an absent item type
+# Delete the only LinkItem in list, test the delete_items method in the same time
+list.delete_items(5)
+list.all
+puts list.filter("link").inspect

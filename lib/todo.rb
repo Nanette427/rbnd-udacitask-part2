@@ -15,7 +15,7 @@ class TodoItem
     @priority    = options[:priority]
   end
 
-  # Return a formatted string with all 
+  # Returns a formatted string with all 
   # the details
   def details
     format_description(@description,25) + "due: " +

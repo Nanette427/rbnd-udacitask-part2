@@ -95,8 +95,8 @@ class UdaciList
   # Params: 
   #  +filter+: type of event we want to select
   def filter(type)
-    @items.select { |item| extract_type(item).downcase == type.downcase }
+    filtered_items = @items.select { |item| extract_type(item).downcase == type.downcase }
+    return filtered_items.empty? ? "No '#{type}' items found" : filtered_items
   end
-
 
 end
