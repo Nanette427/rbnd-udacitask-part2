@@ -80,7 +80,7 @@ class UdaciList
     (item.class).to_s.sub("Item","")
   end
 
-  # Return a boolean that indicate if a given
+  # Returns a boolean that indicate if a given
   # type is valid or not
   # 
   # Params:
@@ -89,7 +89,7 @@ class UdaciList
     ["todo","event","link"].include?(type)
   end
 
-  # Return list of item with a specific type
+  # Returns list of item with a specific type
   # or return a message
   #
   # Params: 
@@ -97,6 +97,32 @@ class UdaciList
   def filter(type)
     filtered_items = @items.select { |item| extract_type(item).downcase == type.downcase }
     return filtered_items.empty? ? "No '#{type}' items found" : filtered_items
+  end
+
+  # Returns all todo items that should be done 
+  # before a specific date
+  # 
+  # Params:
+  #  +date+:: a date
+  def todo_should_be_done_for(date)
+    todo_items  = filter("todo")
+    return todo_items if todo_items.empty?
+    date        = Chronic.parse(date)
+    todo_before = todo_items.select { |item| item.due && item.due <= date }
+  end
+
+  # Remove all the items that is no more relevant 
+  # due date or end_date already in the past
+  def remove_past_items
+    @items = @items.reject do |item|
+      last_date = nil
+      if item.is_a?(TodoItem)
+        last_date = item.due
+      elsif item.is_a?(EventItem)
+        last_date = item.end_date || item.start_date
+      end
+      last_date && last_date <= Time.now
+    end
   end
 
 end

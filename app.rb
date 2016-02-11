@@ -33,24 +33,36 @@ new_list.add("event", "Life happens")
 new_list.add("link", "https://www.udacity.com/", site_name: "Udacity Homepage")
 new_list.add("link", "http://ruby-doc.org")
 
-# # SHOULD RETURN ERROR MESSAGES
-# # ----------------------------
+# SHOULD RETURN ERROR MESSAGES
+# ----------------------------
 new_list.add("image", "http://ruby-doc.org") # Throws InvalidItemType error
 new_list.delete(9) # Throws an IndexExceedsListSize error
 new_list.add("todo", "Hack some portals", priority: "super high") # throws an InvalidPriorityValue error
 
-# # DISPLAY UNTITLED LIST
-# # ---------------------
+# DISPLAY UNTITLED LIST
+# ---------------------
 new_list.all
 
-# # DEMO FILTER BY ITEM TYPE
-# # ------------------------
+# DEMO FILTER BY ITEM TYPE
+# ------------------------
 # Test with a present item type
 filter_event = new_list.filter("event")
 puts filter_event.inspect
 
 # Test with an absent item type
 # Delete the only LinkItem in list, test the delete_items method in the same time
+puts "\nTest delete_items"
 list.delete_items(5)
 list.all
 puts list.filter("link").inspect
+
+# New features
+puts "\nTest todo_should_be_done_for"
+puts new_list.todo_should_be_done_for("In 2 weeks").inspect
+puts "\nTest remove_past_items"
+list.remove_past_items
+list.all
+
+
+
+
